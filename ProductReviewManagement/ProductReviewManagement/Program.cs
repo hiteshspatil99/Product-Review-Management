@@ -10,6 +10,7 @@ namespace ProductReviewManagement
         {
             Console.WriteLine("Welcome To Product Review Management Problem Statement");
 
+            
             List<ProductReview> ProductReviewList = new List<ProductReview>()
             {
                 new ProductReview(){ProductId =1, UserId=1, Ratting= 5 ,Review= "Good", IsLike= true},
@@ -21,9 +22,25 @@ namespace ProductReviewManagement
                 new ProductReview(){ProductId =7, UserId=5, Ratting= 1, Review= "bad", IsLike= false},
                 new ProductReview(){ProductId =8, UserId=5, Ratting= 2, Review= "Moderate", IsLike= false}
             };
-            foreach (var List in ProductReviewList)
+            bool flag = true;
+            while (flag)
             {
-                Console.WriteLine("ProductId:-" + List.ProductId + "" + "UserId:-" + List.UserId + "" + "Ratting:-" + List.Ratting + "" + "Review:-" + List.Review + "" + "IsLike:-" + List.IsLike);
+                Console.WriteLine("Select step Number to Execute the Program :- \n 1.Display Data \n 2.Retrive Data \n 3.Update Employee \n 4.View \n 5.Exit");
+                int choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        Management.Display(ProductReviewList);
+                        break;
+
+                    case 2:
+                        Management.SelectTopRatingsRecords(ProductReviewList);
+                        break;
+
+                    case 3:
+                        flag = false;
+                        break;
+                }
             }
         }
     }
