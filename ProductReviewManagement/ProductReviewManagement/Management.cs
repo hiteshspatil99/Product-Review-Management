@@ -31,14 +31,14 @@ namespace ProductReviewManagement
                 Console.WriteLine("ProductId : " + product.ProductId + " UserId : " + product.UserId + " Rating : " + product.Ratting + " Review : " + product.Review + " IsLike : " + product.IsLike);
             }
         }
-        //public void SelectedRecords(List<ProductReview> ProductReviewList)
-        //{
-        //    var records = List.groupBy(x => x.ProductId).select(x => new { ProductId = x.ProductId, Count = x.Count() });
-        //    foreach (var data in records)
-        //    {
-        //        Console.WriteLine(data.Count);
-        //    }
-        //}
+        public static void CountingProductId(List<ProductReview> list)
+        {
+            var records = list.GroupBy(product => product.ProductId).Select(x => new { ProductId = x.Key, count = x.Count() });
+            foreach (var item in records)
+            {
+                Console.WriteLine("ProductId : " + item.ProductId + " " + "Count:" + item.count);
+            }
+        }
         //public void RetriveProductIdAndReview(List<ProductReview> Review)
         //{
         //    var recordedData = from productReviews in Review 

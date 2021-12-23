@@ -25,7 +25,7 @@ namespace ProductReviewManagement
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select step Number to Execute the Program :- \n 1.Display Data \n 2.Retrive Data \n 3.View Data on the basis of ProductId \n 4.Exit ");
+                Console.WriteLine("Select step Number to Execute the Program :- \n 1.Display Data \n 2.Retrive Data \n 3.View Data on the basis of ProductId \n 4.Count ProductId \n 5. Exit ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -41,15 +41,11 @@ namespace ProductReviewManagement
                         Management.SelectRecordsBasedOnProductId(ProductReviewList);
                         break;
 
-                    //case 4:
-
-                    //    break;
-
-                    //case 5:
-
-                    //    break;
-
                     case 4:
+                        Management.CountingProductId(ProductReviewList);
+                        break;
+
+                    case 5:
                         flag = false;
                         break;
                 }
