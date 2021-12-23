@@ -25,7 +25,7 @@ namespace ProductReviewManagement
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select step Number to Execute the Program :- \n 1.Display Data \n 2.Retrive Data \n 3.View Data on the basis of ProductId \n 4.Count ProductId \n 5. Get Only Data ProductId & Review \n 6. Exit ");
+                Console.WriteLine("Select step Number to Execute the Program :- \n 1.Display Data \n 2.Retrive Data \n 3.View Data on the basis of ProductId \n 4.Count ProductId \n 5. Get Only Data ProductId & Review \n 6. Skipping Five Top records \n 7p. Exit ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -50,6 +50,14 @@ namespace ProductReviewManagement
                         break;
 
                     case 6:
+                        Management.SkipTopRatingsRecords(ProductReviewList);
+                        break;
+
+                    //case 7:
+                    //    Management.RetriveProductIdAndReviw(ProductReviewList);
+                    //    break;
+
+                    case 7:
                         flag = false;
                         break;
                 }

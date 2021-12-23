@@ -49,5 +49,13 @@ namespace ProductReviewManagement
 
             }
         }
+        public static void SkipTopRatingsRecords(List<ProductReview> list)
+        {
+            var records = (from product in list orderby product.Ratting descending select product).Skip(5);
+            foreach (ProductReview product in records)
+            {
+                Console.WriteLine("ProductId : " + product.ProductId + " UserId : " + product.UserId + " Rating : " + product.Ratting + " Review : " + product.Review + " IsLike : " + product.IsLike);
+            }
+        }
     }
 }
