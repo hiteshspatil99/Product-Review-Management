@@ -39,12 +39,15 @@ namespace ProductReviewManagement
                 Console.WriteLine("ProductId : " + item.ProductId + " " + "Count:" + item.count);
             }
         }
-        //public void RetriveProductIdAndReview(List<ProductReview> Review)
-        //{
-        //    var recordedData = from productReviews in Review 
-        //                       select new { productReviews.ProductId, productReviews.Review }; 
-        //    foreach (var list in recordedData)
-        //    {
-        //        Console.WriteLine("ProductId : " + list.ProductId + "  " +  " Review : " + list.Review + ");
+        public static void RetriveProductIdAndReviw(List<ProductReview> list)
+        {
+            var record = list.Select(product => new { ProductId = product.ProductId, Review = product.Review }).ToList();
+            foreach (var item in record)
+            {
+                Console.WriteLine("ProductId : " + item.ProductId + " " + "Review:" + item.Review);
+
+
+            }
+        }
     }
-}   
+}
