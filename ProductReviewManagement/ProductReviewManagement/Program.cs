@@ -25,7 +25,7 @@ namespace ProductReviewManagement
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select step Number to Execute the Program :- \n 1.Display Data \n 2.Retrive Data \n 3.Update Employee \n 4.View \n 5.Exit");
+                Console.WriteLine("Select step Number to Execute the Program :- \n 1.Display Data \n 2.Retrive Data \n 3.View Data on the basis of ProductId \n 4.Exit ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -38,6 +38,18 @@ namespace ProductReviewManagement
                         break;
 
                     case 3:
+                        Management.SelectRecordsBasedOnProductId(ProductReviewList);
+                        break;
+
+                    //case 4:
+
+                    //    break;
+
+                    //case 5:
+
+                    //    break;
+
+                    case 4:
                         flag = false;
                         break;
                 }
