@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Data;
 
 namespace ProductReviewManagement
 {
     public class Management
     {
+        DataTable dataTable = new DataTable();
         public static void Display(List<ProductReview> ProductReviewList)
         {
             foreach (ProductReview product in ProductReviewList)
@@ -23,25 +25,25 @@ namespace ProductReviewManagement
                 Console.WriteLine("ProductId : " + product.ProductId + " UserId : " + product.UserId + " Ratting : " + product.Ratting + " Review : " + product.Review + " IsLike : " + product.IsLike);
             }
         }
-        public static void SelectRecordsBasedOnProductId(List<ProductReview> list)
+        public static void SelectRecordsBasedOnProductId(List<ProductReview> ProductReviewList)
         {
-            var records = (list.Where(product => product.Ratting > 3 && (product.ProductId == 1 || product.ProductId == 4 || product.ProductId == 9))).ToList();
+            var records = (ProductReviewList.Where(product => product.Ratting > 3 && (product.ProductId == 1 || product.ProductId == 4 || product.ProductId == 9))).ToList();
             foreach (ProductReview product in records)
             {
                 Console.WriteLine("ProductId : " + product.ProductId + " UserId : " + product.UserId + " Rating : " + product.Ratting + " Review : " + product.Review + " IsLike : " + product.IsLike);
             }
         }
-        public static void CountingProductId(List<ProductReview> list)
+        public static void CountingProductId(List<ProductReview> ProductReviewList)
         {
-            var records = list.GroupBy(product => product.ProductId).Select(x => new { ProductId = x.Key, count = x.Count() });
+            var records = ProductReviewList.GroupBy(product => product.ProductId).Select(x => new { ProductId = x.Key, count = x.Count() });
             foreach (var item in records)
             {
                 Console.WriteLine("ProductId : " + item.ProductId + " " + "Count:" + item.count);
             }
         }
-        public static void RetriveProductIdAndReviw(List<ProductReview> list)
+        public static void RetriveProductIdAndReviw(List<ProductReview> ProductReviewList)
         {
-            var record = list.Select(product => new { ProductId = product.ProductId, Review = product.Review }).ToList();
+            var record = ProductReviewList.Select(product => new { ProductId = product.ProductId, Review = product.Review }).ToList();
             foreach (var item in record)
             {
                 Console.WriteLine("ProductId : " + item.ProductId + " " + "Review:" + item.Review);
@@ -49,12 +51,31 @@ namespace ProductReviewManagement
 
             }
         }
-        public static void SkipTopRatingsRecords(List<ProductReview> list)
+        public static void SkipTopRatingsRecords(List<ProductReview> ProductReviewList)
         {
-            var records = (from product in list orderby product.Ratting descending select product).Skip(5);
+            var records = (from product in ProductReviewList orderby product.Ratting descending select product).Skip(5);
             foreach (ProductReview product in records)
             {
                 Console.WriteLine("ProductId : " + product.ProductId + " UserId : " + product.UserId + " Rating : " + product.Ratting + " Review : " + product.Review + " IsLike : " + product.IsLike);
+            }
+        }
+        public static void ProductReviewdataTable(List<ProductReview> ProductReviewList)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("ProductId").DataType = typeof(Int32);
+            dataTable.Columns.Add("UserId").DataType = typeof(Int32);
+            dataTable.Columns.Add("Ratting").DataType = typeof(int);
+            dataTable.Columns.Add("Review");
+            dataTable.Columns.Add("IsLike").DataType = typeof(bool);
+            foreach (var item in ProductReviewList)
+            {
+                dataTable.Rows.Add(item.ProductId, item.UserId, item.Ratting, item.Review, item.IsLike);
+            }
+            var productTable = from products in dataTable.AsEnumerable() select products;
+            foreach (DataRow product in productTable)
+            {
+                Console.WriteLine(product.Field<int>("ProductId") + " " + product.Field<int>("UserID") + " " +
+                  product.Field<int>("Ratting") + " " + product.Field<string>("Review") + " " + product.Field<bool>("IsLike"));
             }
         }
     }

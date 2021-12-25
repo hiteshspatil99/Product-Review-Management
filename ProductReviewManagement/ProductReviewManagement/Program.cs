@@ -10,7 +10,7 @@ namespace ProductReviewManagement
         {
             Console.WriteLine("Welcome To Product Review Management Problem Statement");
 
-            
+
             List<ProductReview> ProductReviewList = new List<ProductReview>()
             {
                 new ProductReview(){ProductId =1, UserId=1, Ratting= 5 ,Review= "Good", IsLike= true},
@@ -25,7 +25,7 @@ namespace ProductReviewManagement
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select step Number to Execute the Program :- \n 1.Display Data \n 2.Retrive Data \n 3.View Data on the basis of ProductId \n 4.Count ProductId \n 5. Get Only Data ProductId & Review \n 6. Skipping Five Top records \n 7p. Exit ");
+                Console.WriteLine("Select step Number to Execute the Program :- \n 1.Display Data \n 2.Retrive Data \n 3.View Data on the basis of ProductId \n 4.Count ProductId \n 5. Get Only Data ProductId & Review \n 6. Skipping Five Top records \n 7. Product Data Table \n 8. Exit ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -53,15 +53,17 @@ namespace ProductReviewManagement
                         Management.SkipTopRatingsRecords(ProductReviewList);
                         break;
 
-                    //case 7:
-                    //    Management.RetriveProductIdAndReviw(ProductReviewList);
-                    //    break;
-
                     case 7:
+                        Management.ProductReviewdataTable(ProductReviewList);
+                        break;
+
+                    case 8:
                         flag = false;
                         break;
                 }
+
             }
         }
     }
 }
+
