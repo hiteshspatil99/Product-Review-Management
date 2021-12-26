@@ -20,13 +20,20 @@ namespace ProductReviewManagement
                 new ProductReview(){ProductId =5, UserId=3, Ratting= 2, Review= "Moderate",IsLike= false},
                 new ProductReview(){ProductId =6, UserId=4, Ratting= 3, Review= "nice", IsLike= true},
                 new ProductReview(){ProductId =7, UserId=5, Ratting= 1, Review= "bad", IsLike= false},
-                new ProductReview(){ProductId =8, UserId=5, Ratting= 2, Review= "Moderate", IsLike= false}
+                new ProductReview(){ProductId =8, UserId=5, Ratting= 2, Review= "Moderate", IsLike= false},
+                new ProductReview(){ProductId=9,  UserId=9,  Ratting=5,  Review="Good", IsLike=true},
+                new ProductReview(){ProductId=10, UserId=10, Ratting=5, Review="Good", IsLike=true},
+                new ProductReview(){ProductId=11, UserId=10, Ratting=5, Review="Good", IsLike=true},
+                new ProductReview(){ProductId=12, UserId=10, Ratting=5, Review="Bad", IsLike=true},
+                new ProductReview(){ProductId=13, UserId=10, Ratting=5, Review="Poor", IsLike=true},
+                new ProductReview(){ProductId=14, UserId=10, Ratting=5, Review="Good", IsLike=true},
+                new ProductReview(){ProductId=15, UserId=11, Ratting=5, Review="Bad", IsLike=true}
             };
             bool flag = true;
             while (flag)
             {
                 Console.WriteLine("Select step Number to Execute the Program :- \n 1.Display Data \n 2.Retrive Data \n 3.View Data on the basis of ProductId \n 4.Count ProductId \n 5. Get Only Data ProductId & Review " +
-                    "\n 6. Skipping Five Top records \n 7. Product Data Table \n 8. Perticular Retrieve Records Islike \n 9. Average Ratting of each ProductId \n 10. Perticular Retrieve Records review nice \n 11. Exit ");
+                    "\n 6. Skipping Five Top records \n 7. Product Data Table \n 8. Perticular Retrieve Records Islike \n 9. Average Ratting of each ProductId \n 10. Perticular Retrieve Records review nice \n 11.Retrive Records  by UserId   \n 12. Exit ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -71,6 +78,10 @@ namespace ProductReviewManagement
                         break;
 
                     case 11:
+                        Management.RetriveRecordsFromDataTableWhereUserId(ProductReviewList);
+                        break;
+
+                    case 12:
                         flag = false;
                         break;
                 }
